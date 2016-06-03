@@ -69,6 +69,6 @@ class PlaylistsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def playlist_params
-      params.fetch(:playlist, {})
+      params.require(:playlist).permit(:name,:channel_id,:play_start_date,:play_end_date,:release_date)
     end
 end

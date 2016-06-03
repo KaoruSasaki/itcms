@@ -69,6 +69,6 @@ class SubContentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def sub_content_params
-      params.fetch(:sub_content, {})
+      params.require(:sub_content).permit(:name,:url)
     end
 end
