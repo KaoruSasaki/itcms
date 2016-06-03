@@ -38,7 +38,7 @@ gem 'bcrypt-ruby', '3.1.2'
 
 gem 'less-rails'
 gem 'execjs'
-gem 'twitter-bootstrap-rails'
+gem 'twitter-bootstrap-rails', '3.2.0'
 
 gem 'simple_form'
 gem 'bootstrap-wysihtml5-rails'
