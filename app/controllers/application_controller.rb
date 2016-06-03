@@ -9,5 +9,5 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
   
-  http_basic_authenticate_with :name => 'admin', :password => 'adminx' if Rails.env == "production"
+#  http_basic_authenticate_with :name => 'admin', :password => 'adminx' if Rails.env == "production"
 end
