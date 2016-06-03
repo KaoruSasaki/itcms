@@ -1,0 +1,12 @@
+<%= simple_form_for @display_frame, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :name %>
+  <%= error_span(@display_frame[:name]) %>
+  <%= f.input :frame_pattern %>
+  <%= error_span(@display_frame[:frame_pattern]) %>
+  <%= f.input :image_url %>
+  <%= error_span(@display_frame[:image_url]) %>
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                display_frames_path, :class => 'btn btn-default' %>
+<% end %>

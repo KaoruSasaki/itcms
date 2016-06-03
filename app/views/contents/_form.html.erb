@@ -1,0 +1,22 @@
+<%= simple_form_for @content, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :type %>
+  <%= error_span(@content[:type]) %>
+  <%= f.input :name %>
+  <%= error_span(@content[:name]) %>
+  <%= f.input :url %>
+  <%= error_span(@content[:url]) %>
+  <%= f.input :thumbnail_url %>
+  <%= error_span(@content[:thumbnail_url]) %>
+  <%= f.input :playing_sec %>
+  <%= error_span(@content[:playing_sec]) %>
+  <%= f.input :validity_start_date %>
+  <%= error_span(@content[:validity_start_date]) %>
+  <%= f.input :validity_end_date %>
+  <%= error_span(@content[:validity_end_date]) %>
+  <%= f.input :enabled %>
+  <%= error_span(@content[:enabled]) %>
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                contents_path, :class => 'btn btn-default' %>
+<% end %>

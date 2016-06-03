@@ -1,0 +1,2 @@
+class MedicalContent < Content
+end

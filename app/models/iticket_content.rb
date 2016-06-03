@@ -1,0 +1,2 @@
+class IticketContent < Content
+end

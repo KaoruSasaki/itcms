@@ -1,0 +1,20 @@
+<%= simple_form_for @device, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :name %>
+  <%= error_span(@device[:name]) %>
+  <%= f.input :owner_id %>
+  <%= error_span(@device[:owner_id]) %>
+  <%= f.input :display_frame_id %>
+  <%= error_span(@device[:display_frame_id]) %>
+  <%= f.input :temporary_content_url %>
+  <%= error_span(@device[:temporary_content_url]) %>
+  <%= f.input :emergency_message %>
+  <%= error_span(@device[:emergency_message]) %>
+  <%= f.input :play_volume %>
+  <%= error_span(@device[:play_volume]) %>
+  <%= f.input :call_volume %>
+  <%= error_span(@device[:call_volume]) %>
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                devices_path, :class => 'btn btn-default' %>
+<% end %>

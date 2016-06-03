@@ -1,0 +1,16 @@
+<%= simple_form_for @playlist, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :name %>
+  <%= error_span(@playlist[:name]) %>
+  <%= f.input :channel_id %>
+  <%= error_span(@playlist[:channel_id]) %>
+  <%= f.input :play_start_date %>
+  <%= error_span(@playlist[:play_start_date]) %>
+  <%= f.input :play_end_date %>
+  <%= error_span(@playlist[:play_end_date]) %>
+  <%= f.input :release_date %>
+  <%= error_span(@playlist[:release_date]) %>
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                playlists_path, :class => 'btn btn-default' %>
+<% end %>

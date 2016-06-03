@@ -1,0 +1,10 @@
+<%= simple_form_for @sub_content, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :name %>
+  <%= error_span(@sub_content[:name]) %>
+  <%= f.input :url %>
+  <%= error_span(@sub_content[:url]) %>
+
+  <%= f.button :submit, :class => 'btn-primary' %>
+  <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                sub_contents_path, :class => 'btn btn-default' %>
+<% end %>
