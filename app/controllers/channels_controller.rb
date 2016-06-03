@@ -24,6 +24,8 @@ class ChannelsController < ApplicationController
   # POST /channels
   # POST /channels.json
   def create
+    
+    #binding.pry
     @channel = Channel.new(channel_params)
 
     respond_to do |format|
@@ -69,6 +71,6 @@ class ChannelsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def channel_params
-      params.fetch(:channel, {})
+      params.require(:channel).permit(:name)
     end
 end
