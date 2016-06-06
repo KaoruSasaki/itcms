@@ -9,9 +9,11 @@
   <%= error_span(@content[:thumbnail_url]) %>
   <%= f.input :playing_sec %>
   <%= error_span(@content[:playing_sec]) %>
-  <%= f.input :validity_start_date %>
+  <%= f.label :validity_start_date %>
+  <%= f.text_field :validity_start_date, data: { :date_format => 'YYYY/MM/DD' }, :class => 'form-control datetimepicker', placeholder: 'YYYY/MM/DD' %>
   <%= error_span(@content[:validity_start_date]) %>
-  <%= f.input :validity_end_date %>
+  <%= f.label :validity_end_date %>
+  <%= f.text_field :validity_end_date, data: { :date_format => 'YYYY/MM/DD' }, :class => 'form-control datetimepicker', placeholder: 'YYYY/MM/DD' %>
   <%= error_span(@content[:validity_end_date]) %>
   <%= f.input :enabled %>
   <%= error_span(@content[:enabled]) %>
