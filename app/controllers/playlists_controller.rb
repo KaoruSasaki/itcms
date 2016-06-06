@@ -5,6 +5,7 @@ class PlaylistsController < ApplicationController
   # GET /playlists.json
   def index
     @playlists = Playlist.all
+    @channels = Channel.order(:id).inject({}){|h,c| h.merge({c.id => c.name})}
   end
 
   # GET /playlists/1
