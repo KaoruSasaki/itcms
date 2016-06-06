@@ -5,11 +5,8 @@
   <%= error_span(@content[:name]) %>
   <%= f.input :url %>
   <%= error_span(@content[:url]) %>
-  <%= f.input :thumbnail_url %>
-  <%= error_span(@content[:thumbnail_url]) %>
-  <%= f.input :playing_sec %>
-  <%= error_span(@content[:playing_sec]) %>
-  <%= f.input :validity_start_date, as: :datetime_picker %>
+  <%= f.label :validity_start_date %>
+  <%= f.input :validity_start_date, as: :date_picker %>
   <%= error_span(@content[:validity_start_date]) %>
   <%= f.input :validity_end_date, as: :datetime_picker %>
   <%= error_span(@content[:validity_end_date]) %>
