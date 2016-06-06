@@ -5,9 +5,11 @@
   <%= error_span(@content[:name]) %>
   <%= f.input :url %>
   <%= error_span(@content[:url]) %>
-  <%= f.input :validity_start_date %>
+  <%= f.label :validity_start_date %>
+  <%= f.text_field :validity_start_date, data: { :date_format => 'YYYY/MM/DD' }, :class => 'form-control datetimepicker', placeholder: 'YYYY/MM/DD' %>
   <%= error_span(@content[:validity_start_date]) %>
-  <%= f.input :validity_end_date %>
+  <%= f.label :validity_end_date %>
+  <%= f.text_field :validity_end_date, data: { :date_format => 'YYYY/MM/DD' }, :class => 'form-control datetimepicker', placeholder: 'YYYY/MM/DD' %>
   <%= error_span(@content[:validity_end_date]) %>
   <%= f.input :enabled, as: :select, required: true, collection: [["有効", true], ["無効", false]] %>
   <%= error_span(@content[:enabled]) %>

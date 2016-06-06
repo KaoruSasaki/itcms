@@ -7,6 +7,40 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+    attributes:
+      content:
+        id: 'コンテンツID'
+        type: 'コンテンツ種別'
+        name: 'コンテンツ名'
+        url: 'コンテンツURL'
+        thumbnail_url: 'サムネイル画像URL'
+        playing_sec: '動画の長さ'
+        validity_start_date: '有効期間開始日'
+        validity_end_date: '有効期間終了日'
+        enabled: '有効/無効'
+        created_at: '登録日'
+      playlist:
+        id: 'プレイリストID'
+        name: 'プレイリスト名'
+        channel_id: 'チャネル名'
+        play_start_date: '放映期間開始日'
+        play_end_date: '放映期間終了日'
+        release_date: '公開開始日'
+        created_at: '登録日'
+      tag:
+        id: 'タグID'
+        name: 'タグ名'
+        created_at: '登録日'
+        actions: '編集/削除'
+      sub_content:
+        id: 'サブコンテンツID'
+        name: 'サブコンテンツ名'
+        url: '取得元URL'
+        created_at: '登録日'
+      channel:
+        id: 'チャネルID'
+        name: 'チャネル名'
+        created_at: '登録日'
   date:
     abbr_day_names:
     - 日
