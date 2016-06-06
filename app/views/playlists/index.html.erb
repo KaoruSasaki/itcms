@@ -20,7 +20,7 @@
       <tr>
         <td><%= link_to playlist.id, playlist_path(playlist) %></td>
         <td><%= playlist.name %></td>
-        <td><%= playlist.channel_id %></td>
+        <td><%= @channels[playlist.channel_id] %></td>
         <td><%= playlist.play_start_date %></td>
         <td><%= playlist.play_end_date %></td>
         <td><%= playlist.release_date %></td>
