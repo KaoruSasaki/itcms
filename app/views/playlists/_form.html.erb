@@ -3,13 +3,15 @@
   <%= error_span(@playlist[:name]) %>
   <%= f.input :channel_id %>
   <%= error_span(@playlist[:channel_id]) %>
-  <%= f.input :play_start_date %>
+  <%= f.label :play_start_date %>
+  <%= f.text_field :play_start_date, data: { :date_format => 'YYYY/MM/DD' }, :class => 'form-control datetimepicker', placeholder: 'YYYY/MM/DD' %>
   <%= error_span(@playlist[:play_start_date]) %>
-  <%= f.input :play_end_date %>
+  <%= f.label :play_end_date %>
+  <%= f.text_field :play_end_date, data: { :date_format => 'YYYY/MM/DD' }, :class => 'form-control datetimepicker', placeholder: 'YYYY/MM/DD' %>
   <%= error_span(@playlist[:play_end_date]) %>
-  <%= f.input :release_date %>
+  <%= f.label :release_date %>
+  <%= f.text_field :release_date, data: { :date_format => 'YYYY/MM/DD' }, :class => 'form-control datetimepicker', placeholder: 'YYYY/MM/DD' %>
   <%= error_span(@playlist[:release_date]) %>
-
   <%= f.button :submit, :class => 'btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 playlists_path, :class => 'btn btn-default' %>
