@@ -1,19 +1,15 @@
 <%= simple_form_for @content, :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.input :type %>
+  <%= f.input :type, as: :select, required: true, collection: [["アイチケット", "iticket_content"], ["医療機関", "medical_content"]] %>
   <%= error_span(@content[:type]) %>
   <%= f.input :name %>
   <%= error_span(@content[:name]) %>
   <%= f.input :url %>
   <%= error_span(@content[:url]) %>
-  <%= f.input :thumbnail_url %>
-  <%= error_span(@content[:thumbnail_url]) %>
-  <%= f.input :playing_sec %>
-  <%= error_span(@content[:playing_sec]) %>
   <%= f.input :validity_start_date %>
   <%= error_span(@content[:validity_start_date]) %>
   <%= f.input :validity_end_date %>
   <%= error_span(@content[:validity_end_date]) %>
-  <%= f.input :enabled %>
+  <%= f.input :enabled, as: :select, required: true, collection: [["有効", true], ["無効", false]] %>
   <%= error_span(@content[:enabled]) %>
 
   <%= f.button :submit, :class => 'btn-primary' %>

@@ -1,10 +1,10 @@
 class ContentsController < ApplicationController
-  before_action :set_content, only: [:show, :edit, :update, :destroy]
+  before_action :load_content, only: %i(show edit update destroy)
 
   # GET /contents
   # GET /contents.json
   def index
-    @contents = Content.all
+    @contents = IticketContent.all.concat(MedicalContent.all)
   end
 
   # GET /contents/1
@@ -62,13 +62,20 @@ class ContentsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_content
-      @content = Content.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def content_params
-      params.require(:content).permit(:type,:name,:url,:thumbnail_url,:playing_sec,:validity_start_date,:validity_end_date,:enabled)
-    end
+ 
+  def load_content
+    @content = content_class.find(params[:id])
+  end
+ 
+  def type
+    params[:type]
+  end
+ 
+  def content_params
+    params.require(type.underscore.to_sym).permit(:name, :url, :thumbnail_url, :playing_sec, :validity_start_date, :validity_end_date, :enabled)
+  end
+ 
+  def content_class
+    type.constantize
+  end
 end

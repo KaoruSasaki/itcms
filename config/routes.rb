@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   resources :users
   resources :display_frames
   resources :contents
+  resources :iticket_contents, controller: :contents, type: 'IticketContent', except: %i(new)
+  resources :medical_contents, controller: :contents, type: 'MedicalContent', except: %i(new)
+  resources :template_contents, controller: :contents, type: 'TemplateContent', except: %i(new)
   resources :sub_contents
   resources :channels
   resources :playlists
