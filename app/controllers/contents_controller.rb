@@ -1,10 +1,19 @@
 class ContentsController < ApplicationController
   before_action :load_content, only: %i(show edit update destroy)
 
+  def search
+    @contents_search = Search::Content.new(search_params)
+    @contents = @contents_search
+      .matches
+      .order(availability: :desc, code: :asc)
+      .decorate
+  end
+
   # GET /contents
   # GET /contents.json
   def index
-    @contents = IticketContent.all.concat(MedicalContent.all)
+    @contents_search = Search::Content.new
+    #@contents = IticketContent.all.concat(MedicalContent.all)
   end
 
   # GET /contents/1
@@ -77,5 +86,12 @@ class ContentsController < ApplicationController
  
   def content_class
     type.constantize
+  end
+
+  # 検索フォームから受け取ったパラメータ
+  def search_params
+    params
+      .require(:search_content)
+      .permit(Search::Content::ATTRIBUTES)
   end
 end

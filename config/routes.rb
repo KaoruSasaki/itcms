@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
   resources :menus
-  resources :sessions
   resources :users
   resources :display_frames
-  resources :contents
+  resources :contents do
+    collection do
+      get 'search'
+    end
+  end
   resources :iticket_contents, controller: :contents, type: 'IticketContent', except: %i(new)
   resources :medical_contents, controller: :contents, type: 'MedicalContent', except: %i(new)
   resources :template_contents, controller: :contents, type: 'TemplateContent', except: %i(new)
@@ -12,7 +15,11 @@ Rails.application.routes.draw do
   resources :playlists
   resources :devices
   resources :tags
-  resources :sessions, only: [:index, :create, :destroy]
+  get    'login'   => 'sessions#new'
+  post   'login'   => 'sessions#create'
+  delete 'logout'  => 'sessions#destroy'
+#  resources :sessions, only: [:index, :create, :destroy]
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

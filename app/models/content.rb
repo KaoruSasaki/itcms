@@ -1,4 +1,7 @@
 class Content < ActiveRecord::Base
+  has_many :playlist_contents
+  has_many :playlists, :through => :playlist_contents
+
   class << self
     def find_sti_class(type_name)
       type_name.camelize.constantize
@@ -7,9 +10,5 @@ class Content < ActiveRecord::Base
     def sti_name
       name.underscore
     end
-  end
-  
-  def sti_name
-    self.class.c
   end
 end
