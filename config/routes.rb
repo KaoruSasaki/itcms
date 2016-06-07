@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :display_frames
   resources :contents do
     collection do
-      get 'search'
+      match 'search' => 'contents#search', via: [:get, :post], as: :search
     end
   end
   resources :iticket_contents, controller: :contents, type: 'IticketContent', except: %i(new)

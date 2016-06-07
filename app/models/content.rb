@@ -1,6 +1,8 @@
 class Content < ActiveRecord::Base
   has_many :playlist_contents
   has_many :playlists, :through => :playlist_contents
+  has_many :content_tags
+  has_many :tags, :through => :content_tags
 
   class << self
     def find_sti_class(type_name)
