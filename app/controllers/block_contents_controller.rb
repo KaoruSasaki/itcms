@@ -11,9 +11,9 @@ class BlockContentsController < ApplicationController
     
     respond_to do |format|
       if ret
-        format.html { redirect_to :back, notice: 'Content file was successfully created.' }
+        format.html { redirect_to :back, notice: 'Succeeded in shelf registration of content.' }
       else
-        format.html { redirect_to :back, notice: 'Failed to create content files.' }
+        format.html { redirect_to :back, notice: 'Failed to shelf registration of content.' }
       end
     end
   end
