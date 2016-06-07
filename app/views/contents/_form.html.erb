@@ -9,9 +9,9 @@
   <%= error_span(@content[:thumbnail_url]) %>
   <%= f.input :playing_sec %>
   <%= error_span(@content[:playing_sec]) %>
-  <%= f.input :validity_start_date, as: :datetime_picker %>
+  <%= f.input :validity_start_date, as: :date_picker %>
   <%= error_span(@content[:validity_start_date]) %>
-  <%= f.input :validity_end_date, as: :datetime_picker %>
+  <%= f.input :validity_end_date, as: :date_picker %>
   <%= error_span(@content[:validity_end_date]) %>
   <%= f.input :enabled, as: :select, required: true, collection: [["有効", true], ["無効", false]] %>
   <%= error_span(@content[:enabled]) %>
