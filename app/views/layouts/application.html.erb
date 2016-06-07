@@ -46,40 +46,44 @@
           <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" href="#">Workspace</a>
-        <div class="nav-collapse collapse navbar-responsive-collapse">
-          <ul class="nav navbar-nav">
-            <li><%= link_to "Link1", "/path1"  %></li>
-            <li><%= link_to "Link2", "/path2"  %></li>
-            <li><%= link_to "Link3", "/path3"  %></li>
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+            <% if logged_in? %>
+              <li><%= link_to "Log out", logout_path, method: "delete" %></li>
+            <% else %>
+              <li><%= link_to "Log in", login_path %></li>
+            <% end %>
           </ul>
-        </div>
+        </nav>
       </div>
     </div>
 
     <div class="container">
       <div class="row">
-        <div class="col-lg-3">
-          <div class="well sidebar-nav">
-            <h3>メニュー</h3>
-            <ul class="nav nav-list">
-              <li class="nav-header">業務</li>
-              <li><%= link_to "コンテンツ一括登録", "/block_contents"  %></li>
-              <li><%= link_to "提供プレイリスト一括登録", "/block_playlists"  %></li>
-              <li><%= link_to "コンテンツ一覧", "/contents"  %></li>
-              <li><%= link_to "提供プレイリスト登録", "/playlists"  %></li>
-            <ul class="nav nav-list">
-            </ul>
-              <li class="nav-header">マスタメンテ</li>
-              <li><%= link_to "タグ", "/tags"  %></li>
-              <li><%= link_to "サブコンテンツ", "/sub_contents"  %></li>
-              <li><%= link_to "チャネル", "/channels"  %></li>
-            <ul class="nav nav-list">
-            </ul>
-              <li class="nav-header">端末設定</li>
-              <li><%= link_to "端末一覧", "/devices"  %></li>
-            </ul>
-          </div><!--/.well -->
-        </div><!--/span-->
+        <% if logged_in? %>
+          <div class="col-lg-3">
+            <div class="well sidebar-nav">
+              <h3>メニュー</h3>
+              <ul class="nav nav-list">
+                <li class="nav-header">業務</li>
+                <li><%= link_to "コンテンツ一括登録", "/block_contents"  %></li>
+                <li><%= link_to "提供プレイリスト一括登録", "/block_playlists"  %></li>
+                <li><%= link_to "コンテンツ一覧", "/contents"  %></li>
+                <li><%= link_to "提供プレイリスト登録", "/playlists"  %></li>
+              <ul class="nav nav-list">
+              </ul>
+                <li class="nav-header">マスタメンテ</li>
+                <li><%= link_to "タグ", "/tags"  %></li>
+                <li><%= link_to "サブコンテンツ", "/sub_contents"  %></li>
+                <li><%= link_to "チャネル", "/channels"  %></li>
+              <ul class="nav nav-list">
+              </ul>
+                <li class="nav-header">端末設定</li>
+                <li><%= link_to "端末一覧", "/devices"  %></li>
+              </ul>
+            </div><!--/.well -->
+          </div><!--/span-->
+        <% end %>
         <div class="col-lg-9">
           <%= bootstrap_flash %>
           <%= yield %>
