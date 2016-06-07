@@ -1,0 +1,10 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <%= form_tag(import_block_playlists_path, :method => :post, multipart: true) do %>
+      <div class="form-group">
+        <%= file_field_tag :file_url %>
+      </div>
+      <%= submit_tag "CSVインポート", :class => "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

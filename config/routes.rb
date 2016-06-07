@@ -18,6 +18,16 @@ Rails.application.routes.draw do
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
+  resources :block_contents do
+    collection do
+      post :import
+    end
+  end
+  resources :block_playlists do
+    collection do
+      post :import
+    end
+  end
 #  resources :sessions, only: [:index, :create, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.

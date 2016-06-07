@@ -10,5 +10,13 @@ class Content < ActiveRecord::Base
     def sti_name
       name.underscore
     end
+    
+    def create_block(file)
+      if file.blank?
+        false
+      else
+        true
+      end
+    end
   end
 end

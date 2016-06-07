@@ -8,6 +8,8 @@ ja:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
     models:
+      block_content: 'コンテンツ一括'
+      block_playlist: '提供プレイリスト一括'
       content: 'コンテンツ'
       playlist: '提供プレイリスト'
       tag: 'タグ'
