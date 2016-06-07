@@ -7,6 +7,13 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+    models:
+      content: 'コンテンツ'
+      playlist: '提供プレイリスト'
+      tag: 'タグ'
+      sub_content: 'サブコンテンツ'
+      channel: 'チャネル'
+      device: '端末'
     attributes:
       content:
         id: 'コンテンツID'
@@ -40,6 +47,16 @@ ja:
       channel:
         id: 'チャネルID'
         name: 'チャネル名'
+        created_at: '登録日'
+      device:
+        id: '端末ID'
+        name: '端末名'
+        owner_id: 'オーナーID'
+        display_frame_id: '表示フレーム'
+        temporary_content_url: 'ダウンロードコンテンツ'
+        emergency_message: '緊急メッセージ'
+        play_volume: '放映音量'
+        call_volume: '呼出音量'
         created_at: '登録日'
   date:
     abbr_day_names:

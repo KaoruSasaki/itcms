@@ -5,6 +5,7 @@ class DevicesController < ApplicationController
   # GET /devices.json
   def index
     @devices = Device.all
+    @display_frames = DisplayFrame.order(:id).inject({}){|h,c| h.merge({c.id => c.name})}
   end
 
   # GET /devices/1
@@ -69,6 +70,6 @@ class DevicesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def device_params
-      params.fetch(:device, {})
+      params.require(:device).permit(:name,:owner_id,:display_frame_id,:temporary_content_url,:emergency_message,:play_volume,:call_volume)
     end
 end
