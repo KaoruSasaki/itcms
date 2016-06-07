@@ -5,10 +5,9 @@
   <%= error_span(@content[:name]) %>
   <%= f.input :url %>
   <%= error_span(@content[:url]) %>
-  <%= f.label :validity_start_date %>
   <%= f.input :validity_start_date, as: :date_picker %>
   <%= error_span(@content[:validity_start_date]) %>
-  <%= f.input :validity_end_date, as: :datetime_picker %>
+  <%= f.input :validity_end_date, as: :date_picker %>
   <%= error_span(@content[:validity_end_date]) %>
   <%= f.input :enabled, as: :select, required: true, collection: [["有効", true], ["無効", false]] %>
   <%= error_span(@content[:enabled]) %>
