@@ -69,6 +69,6 @@ class DisplayFramesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def display_frame_params
-      params.fetch(:display_frame, {})
+      params.require(:display_frame).permit(:name,:frame_pattern,:image_url)
     end
 end

@@ -3,7 +3,7 @@
   <%= error_span(@device[:name]) %>
   <%= f.input :owner_id %>
   <%= error_span(@device[:owner_id]) %>
-  <%= f.input :display_frame_id %>
+  <%= f.input :display_frame_id, as: :select, required: true, collection: DisplayFrame.order(:id).map{|c| [c.name,c.id]} %>
   <%= error_span(@device[:display_frame_id]) %>
   <%= f.input :temporary_content_url %>
   <%= error_span(@device[:temporary_content_url]) %>
