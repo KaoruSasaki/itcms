@@ -1,6 +1,6 @@
 <%- model_class = Device -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+  <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
 <table class="table table-striped">
   <thead>
@@ -23,7 +23,7 @@
         <td><%= link_to device.id, device_path(device) %></td>
         <td><%= device.name %></td>
         <td><%= device.owner_id %></td>
-        <td><%= device.display_frame_id %></td>
+        <td><%= @display_frames[device.display_frame_id] %></td>
         <td><%= device.temporary_content_url %></td>
         <td><%= device.emergency_message %></td>
         <td><%= device.play_volume %></td>
