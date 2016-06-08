@@ -86,7 +86,7 @@ class PlaylistsController < ApplicationController
     # 検索フォームから受け取ったパラメータ
     def search_params
       search_conditions = %i(
-        name_cont play_start_date_gteq play_end_date_lteq release_date_gteq
+        name_cont channel_name_cont play_start_date_gteq play_end_date_lteq release_date_gteq
       )
       params.require(:q).permit(search_conditions)
     end
