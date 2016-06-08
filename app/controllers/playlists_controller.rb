@@ -4,10 +4,21 @@ class PlaylistsController < ApplicationController
   # GET /playlists
   # GET /playlists.json
   def index
-    @playlists = Playlist.all
+    conditions = params.has_key?(:q) ? search_params : {}
+    @q = Playlist.search(conditions)
+    @playlists = @q
+      .result
+      .order(updated_at: :desc)
     @channels = Channel.order(:id).inject({}){|h,c| h.merge({c.id => c.name})}
   end
-
+  
+  def search
+    @q = Playlist.search(search_params)
+    @playlists = @q
+      .result
+      .order(updated_at: :desc)
+  end
+  
   # GET /playlists/1
   # GET /playlists/1.json
   def show
@@ -71,5 +82,12 @@ class PlaylistsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def playlist_params
       params.require(:playlist).permit(:name,:channel_id,:play_start_date,:play_end_date,:release_date)
+    end
+    # 検索フォームから受け取ったパラメータ
+    def search_params
+      search_conditions = %i(
+        name_cont play_start_date_gteq play_end_date_lteq release_date_gteq
+      )
+      params.require(:q).permit(search_conditions)
     end
 end

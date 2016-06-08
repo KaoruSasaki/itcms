@@ -4,9 +4,20 @@ class ChannelsController < ApplicationController
   # GET /channels
   # GET /channels.json
   def index
-    @channels = Channel.all
+    conditions = params.has_key?(:q) ? search_params : {}
+    @q = Channel.search(conditions)
+    @channels = @q
+      .result
+      .order(updated_at: :desc)
   end
 
+  def search
+    @q = Channel.search(search_params)
+    @channels = @q
+      .result
+      .order(updated_at: :desc)
+  end
+  
   # GET /channels/1
   # GET /channels/1.json
   def show
@@ -72,5 +83,12 @@ class ChannelsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def channel_params
       params.require(:channel).permit(:name)
+    end
+    # 検索フォームから受け取ったパラメータ
+    def search_params
+      search_conditions = %i(
+        name_cont
+      )
+      params.require(:q).permit(search_conditions)
     end
 end

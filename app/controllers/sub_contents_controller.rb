@@ -4,9 +4,20 @@ class SubContentsController < ApplicationController
   # GET /sub_contents
   # GET /sub_contents.json
   def index
-    @sub_contents = SubContent.all
+    conditions = params.has_key?(:q) ? search_params : {}
+    @q = SubContent.search(conditions)
+    @sub_contents = @q
+      .result
+      .order(updated_at: :desc)
   end
 
+  def search
+    @q = SubContent.search(search_params)
+    @sub_contents = @q
+      .result
+      .order(updated_at: :desc)
+  end
+  
   # GET /sub_contents/1
   # GET /sub_contents/1.json
   def show
@@ -70,5 +81,12 @@ class SubContentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def sub_content_params
       params.require(:sub_content).permit(:name,:url)
+    end
+    # 検索フォームから受け取ったパラメータ
+    def search_params
+      search_conditions = %i(
+        name_cont url_cont
+      )
+      params.require(:q).permit(search_conditions)
     end
 end
