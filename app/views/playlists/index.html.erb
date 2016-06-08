@@ -2,6 +2,11 @@
 <div class="page-header">
   <h1><%=t '.title', :default => "提供プレイリスト一覧" %></h1>
 </div>
+
+<div>
+  <%= render :partial => 'search_form', locals: {action_path: playlists_path} %>
+</div>
+
 <table class="table table-striped">
   <thead>
     <tr>

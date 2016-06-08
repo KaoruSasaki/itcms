@@ -2,6 +2,11 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
 </div>
+
+<div>
+  <%= render :partial => 'search_form', locals: {action_path: sub_contents_path} %>
+</div>
+
 <table class="table table-striped">
   <thead>
     <tr>

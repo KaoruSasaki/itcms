@@ -4,9 +4,20 @@ class TagsController < ApplicationController
   # GET /tags
   # GET /tags.json
   def index
-    @tags = Tag.all
+    conditions = params.has_key?(:q) ? search_params : {}
+    @q = Tag.search(conditions)
+    @tags = @q
+      .result
+      .order(updated_at: :desc)
   end
-
+  
+  def search
+    @q = Tag.search(search_params)
+    @tags = @q
+      .result
+      .order(updated_at: :desc)
+  end
+  
   # GET /tags/1
   # GET /tags/1.json
   def show
@@ -70,5 +81,12 @@ class TagsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def tag_params
       params.require(:tag).permit(:name)
+    end
+    # 検索フォームから受け取ったパラメータ
+    def search_params
+      search_conditions = %i(
+        name_cont
+      )
+      params.require(:q).permit(search_conditions)
     end
 end

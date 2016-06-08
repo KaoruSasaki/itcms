@@ -4,10 +4,21 @@ class DevicesController < ApplicationController
   # GET /devices
   # GET /devices.json
   def index
-    @devices = Device.all
+    conditions = params.has_key?(:q) ? search_params : {}
+    @q = Device.search(conditions)
+    @devices = @q
+      .result
+      .order(updated_at: :desc)
     @display_frames = DisplayFrame.order(:id).inject({}){|h,c| h.merge({c.id => c.name})}
   end
-
+  
+  def search
+    @q = Dvice.search(search_params)
+    @devices = @q
+      .result
+      .order(updated_at: :desc)
+  end
+  
   # GET /devices/1
   # GET /devices/1.json
   def show
@@ -71,5 +82,12 @@ class DevicesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def device_params
       params.require(:device).permit(:name,:owner_id,:display_frame_id,:temporary_content_url,:emergency_message,:play_volume,:call_volume)
+    end
+    # 検索フォームから受け取ったパラメータ
+    def search_params
+      search_conditions = %i(
+        name_cont owner_id_start
+      )
+      params.require(:q).permit(search_conditions)
     end
 end
