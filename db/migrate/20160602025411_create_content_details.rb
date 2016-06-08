@@ -8,6 +8,7 @@ class CreateContentDetails < ActiveRecord::Migration
       t.string :font_color
       t.integer :font_size
       t.integer :font_horizontal_position
+      t.integer :lock_version, default: 0
 
       t.timestamps null: false
     end

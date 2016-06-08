@@ -5,6 +5,7 @@ class CreateContentTags < ActiveRecord::Migration
       t.references :tag
       t.string :search_keyword
       t.integer :display_order
+      t.integer :lock_version, default: 0
 
       t.timestamps null: false
     end

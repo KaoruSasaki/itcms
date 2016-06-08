@@ -7,9 +7,9 @@ Rails.application.routes.draw do
       match 'search' => 'contents#search', via: [:get, :post], as: :search
     end
   end
-  resources :iticket_contents, controller: :contents, type: 'IticketContent', except: %i(new)
-  resources :medical_contents, controller: :contents, type: 'MedicalContent', except: %i(new)
-  resources :template_contents, controller: :contents, type: 'TemplateContent', except: %i(new)
+  resources :iticket_contents, controller: :contents, type: 'IticketContent'
+  resources :medical_contents, controller: :contents, type: 'MedicalContent'
+  resources :template_contents, controller: :contents, type: 'TemplateContent'
   resources :sub_contents
   resources :channels
   resources :playlists

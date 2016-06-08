@@ -8,6 +8,7 @@ class CreateDevices < ActiveRecord::Migration
       t.string :emergency_message
       t.integer :play_volume
       t.integer :call_volume
+      t.integer :lock_version, default: 0
 
       t.timestamps null: false
     end

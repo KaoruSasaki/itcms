@@ -35,7 +35,7 @@
         <td><%= content.created_at.strftime('%Y/%m/%d') %></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_iticket_content_path(content), :class => 'btn btn-default btn-xs' %>
+                      edit_content_path(content), :class => 'btn btn-default btn-xs' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       iticket_content_path(content),
                       :method => :delete,

@@ -43,11 +43,11 @@ class ContentsController < ApplicationController
   # POST /contents
   # POST /contents.json
   def create
-    @content = Content.new(content_params)
+    @content = Content.new(create_params)
 
     respond_to do |format|
       if @content.save
-        format.html { redirect_to @content, notice: 'Content tag was successfully created.' }
+        format.html { redirect_to @content, notice: 'Content was successfully created.' }
         format.json { render :show, status: :created, location: @content }
       else
         format.html { render :new }
@@ -60,8 +60,8 @@ class ContentsController < ApplicationController
   # PATCH/PUT /contents/1.json
   def update
     respond_to do |format|
-      if @content.update(content_params)
-        format.html { redirect_to @content, notice: 'Content tag was successfully updated.' }
+      if @content.update(update_params)
+        format.html { redirect_to @content, notice: 'Content was successfully updated.' }
         format.json { render :show, status: :ok, location: @content }
       else
         format.html { render :edit }
@@ -75,7 +75,7 @@ class ContentsController < ApplicationController
   def destroy
     @content.destroy
     respond_to do |format|
-      format.html { redirect_to contents_url, notice: 'Content tag was successfully destroyed.' }
+      format.html { redirect_to contents_url, notice: 'Content was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -83,19 +83,24 @@ class ContentsController < ApplicationController
   private
  
   def load_content
-    @content = content_class.find(params[:id])
+    @content = Content.find(params[:id])
   end
  
-  def type
-    params[:type]
+  def create_params
+    key = if params.has_key?(:iticket_content)
+            :iticket_content
+          elsif params.has_key?(:medical_content)
+            :medical_content
+          elsif params.has_key?(:template_content)
+            :template_content
+          else
+            :content
+          end
+    params.require(key).permit(:type, :name, :url, :validity_start_date, :validity_end_date)
   end
- 
-  def content_params
-    params.require(type.underscore.to_sym).permit(:name, :url, :validity_start_date, :validity_end_date, :enabled)
-  end
- 
-  def content_class
-    type.constantize
+
+  def update_params
+    params.require(@content.type.underscore).permit(:type, :name, :url, :validity_start_date, :validity_end_date)
   end
 
   # 検索フォームから受け取ったパラメータ

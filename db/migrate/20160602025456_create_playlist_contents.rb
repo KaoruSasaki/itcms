@@ -4,6 +4,7 @@ class CreatePlaylistContents < ActiveRecord::Migration
       t.references :playlist
       t.references :content
       t.integer :display_order
+      t.integer :lock_version, default: 0
 
       t.timestamps null: false
     end

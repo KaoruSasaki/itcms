@@ -4,6 +4,7 @@ class CreateDisplayFrames < ActiveRecord::Migration
       t.string :name
       t.integer :frame_pattern
       t.string :image_url
+      t.integer :lock_version, default: 0
 
       t.timestamps null: false
     end

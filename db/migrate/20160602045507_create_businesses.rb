@@ -7,6 +7,7 @@ class CreateBusinesses < ActiveRecord::Migration
       t.integer :dispay_order
       t.string :call_message
       t.integer :call_display_sec
+      t.integer :lock_version, default: 0
 
       t.timestamps null: false
     end
