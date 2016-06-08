@@ -4,7 +4,14 @@ class ContentsController < ApplicationController
   # GET /contents
   # GET /contents.json
   def index
-    @q = Content.search
+    if params.has_key?(:q)
+      conditions = search_params
+      @check_flag = (conditions[:enabled_eq]=="true") ? true : false
+    else
+      conditions = {}
+      @check_flag = true
+    end
+    @q = Content.search(conditions)
     @contents = @q
       .result
       .includes(:content_tags)
@@ -84,7 +91,7 @@ class ContentsController < ApplicationController
   end
  
   def content_params
-    params.require(type.underscore.to_sym).permit(:name, :url, :thumbnail_url, :playing_sec, :validity_start_date, :validity_end_date, :enabled)
+    params.require(type.underscore.to_sym).permit(:name, :url, :validity_start_date, :validity_end_date, :enabled)
   end
  
   def content_class

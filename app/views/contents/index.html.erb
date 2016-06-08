@@ -1,19 +1,10 @@
 <%- model_class = Content -%>
 <div class="page-header">
-  <div class="form-group">
-    <h1><%=t '.title', :default => model_class.model_name.human.titleize %></h1>
-  </div>
-  <div class="form-group">
-    <div class="container">
-      <%= link_to "新規登録",
-          new_content_path,
-          :class => 'btn btn-primary' %>
-    </div>
-  </div>
+  <h1><%=t '.title', :default => "コンテンツ一覧" %></h1>
 </div>
 
 <div>
-  <%= render :partial => 'search_form' %>
+  <%= render :partial => 'search_form', locals: {action_path: contents_path, check_flag: @check_flag} %>
 </div>
 
 <table class="table table-striped">
@@ -27,7 +18,8 @@
       <th>有効期間</th>
       <th>有効/無効</th>
       <th>更新日</th>
-      <th></th>
+      <th>
+      </th>
     </tr>
   </thead>
   <tbody>
@@ -54,3 +46,9 @@
     <% end %>
   </tbody>
 </table>
+
+<div class="container">
+  <%= link_to "新規登録",
+      new_content_path,
+      :class => 'btn btn-primary' %>
+</div>

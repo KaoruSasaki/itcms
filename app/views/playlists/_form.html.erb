@@ -1,13 +1,13 @@
-<%= simple_form_for @playlist, :html => { :class => 'form-horizontal' } do |f| %>
-  <%= f.input :name %>
+<%= simple_form_for @playlist, wrapper: "horizontal_form", :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :name, input_wrapper_html: { class: "col-xs-8" } %>
   <%= error_span(@playlist[:name]) %>
-  <%= f.input :channel_id ,as: :select, required: true, collection: Channel.order(:id).map{|c| [c.name,c.id]} %>%>
+  <%= f.input :channel_id ,as: :select, required: true, collection: Channel.order(:id).map{|c| [c.name,c.id]}, input_wrapper_html: { class: "col-xs-8" } %>
   <%= error_span(@playlist[:channel_id]) %>
-  <%= f.input :play_start_date, as: :date_picker %>
+  <%= f.input :play_start_date, as: :date_picker, input_wrapper_html: { class: "col-xs-8" } %>
   <%= error_span(@playlist[:play_start_date]) %>
-  <%= f.input :play_start_date, as: :date_picker %>
+  <%= f.input :play_start_date, as: :date_picker, input_wrapper_html: { class: "col-xs-8" } %>
   <%= error_span(@playlist[:play_end_date]) %>
-  <%= f.input :release_date, as: :date_picker %>
+  <%= f.input :release_date, as: :date_picker, input_wrapper_html: { class: "col-xs-8" } %>
   <%= error_span(@playlist[:release_date]) %>
   
   <%= link_to "コンテンツ検索",

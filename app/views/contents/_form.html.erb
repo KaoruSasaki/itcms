@@ -9,9 +9,8 @@
   <%= error_span(@content[:validity_start_date]) %>
   <%= f.input :validity_end_date, as: :date_picker %>
   <%= error_span(@content[:validity_end_date]) %>
-  <%= f.input :enabled, as: :select, required: true, collection: [["有効", true], ["無効", false]] %>
+  <%= f.input :enabled, label: "有効", as: :boolean, checked_value: true, unchecked_value: false, input_html: { checked: @content.enabled } %>
   <%= error_span(@content[:enabled]) %>
-
   <%= f.button :submit, :class => 'btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 contents_path, :class => 'btn btn-default' %>

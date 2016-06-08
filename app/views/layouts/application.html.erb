@@ -49,9 +49,9 @@
         <nav>
           <ul class="nav navbar-nav navbar-right">
             <% if logged_in? %>
-              <li><%= link_to "Log out", logout_path, method: "delete" %></li>
+              <li><%= link_to "ログアウト", logout_path, method: "delete" %></li>
             <% else %>
-              <li><%= link_to "Log in", login_path %></li>
+              <li><%= link_to "ログイン", login_path %></li>
             <% end %>
           </ul>
         </nav>
@@ -91,7 +91,7 @@
       </div><!--/row-->
 
       <footer>
-        <p>&copy; Company 2016</p>
+        <p>Copyright &copy; hoge Corporation. All Rights Reserved.</p>
       </footer>
 
     </div> <!-- /container -->

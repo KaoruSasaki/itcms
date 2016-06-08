@@ -3,13 +3,13 @@
     <div class="panel-title">検索</div>
   </div>
   <div class="panel-body">
-    <%= search_form_for(@q, url: search_contents_path, wrapper: "horizontal_form", html: { method: :get, class: 'form-horizontal', role: 'form' }) do |f| %>
+    <%= search_form_for(@q, url: action_path, wrapper: "horizontal_form", html: { method: :get, class: 'form-horizontal', role: 'form' }) do |f| %>
       <div class="row">
         <div class="col-sm-6">
-          <%= f.input :name_cont, label: "コンテンツ名", input_wrapper_html: { class: "col-xs-6" }, class: 'form-control' %>
+          <%= f.input :name_cont, label: "コンテンツ名", input_wrapper_html: { class: "col-xs-8" }, class: 'form-control' %>
         </div>
         <div class="col-sm-6">
-          <%= f.input :content_tags_search_keyword_cont, label: "タグ名", input_wrapper_html: { class: "col-xs-6" }, class: 'form-control' %>
+          <%= f.input :content_tags_search_keyword_cont, label: "タグ名", input_wrapper_html: { class: "col-xs-8" }, class: 'form-control' %>
         </div>
       </div>
       <div class="row">
@@ -22,11 +22,11 @@
       </div>
       <div class="row">
         <div class="col-sm-6">
-          <%= f.input :type_eq, label: "種別", as: :select, required: true, collection: [["アイチケット", "iticket_content"], ["医療機関", "medical_content"]], input_wrapper_html: { class: "col-xs-4" }, class: 'form-control' %>
+          <%= f.input :type_eq, label: "種別", as: :select, required: true, collection: [["アイチケット", "iticket_content"], ["医療機関", "medical_content"]], input_wrapper_html: { class: "col-xs-6" }, class: 'form-control' %>
         </div>
         <div class="col-sm-6">
           <div class="container">
-            <%= f.input :enabled_eq, label: "有効", as: :boolean, checked_value: true, unchecked_value: false, input_wrapper_html: { class: "col-xs-3" }, class: 'form-control' %>
+            <%= f.input :enabled_eq, label: "有効のみ検索", as: :boolean, checked_value: true, unchecked_value: false, input_html: { checked: check_flag }, input_wrapper_html: { class: "col-xs-3" }, class: 'form-control' %>
           </div>
         </div>
       </div>

@@ -1,8 +1,10 @@
-<%= form_tag login_path do %>
-<div class="field"><%= label_tag :name, 'ログイン名' %>
-  <%= text_field_tag :name, params[:name] %>
-</div><div class="field"><%= label_tag :pass, 'パスワード' %>
-  <%= password_field_tag :pass , params[:pass]%>
-</div><div class="actions"><%= submit_tag "ログイン", :class => "btn btn-primary" %>
-</div>
+<% unless logged_in? %>
+  <%= form_tag login_path do %>
+  <div class="field"><%= label_tag :name, 'ログイン名' %>
+    <%= text_field_tag :name, params[:name] %>
+  </div><div class="field"><%= label_tag :pass, 'パスワード' %>
+    <%= password_field_tag :pass , params[:pass]%>
+  </div><div class="actions"><%= submit_tag "ログイン", :class => "btn btn-primary" %>
+  </div>
+  <% end %>
 <% end %>
