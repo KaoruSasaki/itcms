@@ -1,0 +1,41 @@
+<%- model_class = Content -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => "コンテンツ検索" %></h1>
+</div>
+<%= link_to "戻る", :back, :class => 'btn btn-default' %>
+<div>
+  <%= render :partial => 'search_form', locals: {action_path: search_contents_path, check_flag: @check_flag} %>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>ID</th>
+      <th>コンテンツ名</th>
+      <th>種別</th>
+      <th>タグ</th>
+      <th>再生時間</th>
+      <th>有効期間</th>
+      <th>有効/無効</th>
+      <th>更新日</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @contents.each do |content| %>
+      <tr>
+        <td>
+          <%= link_to "選択", new_playlist_path(content_id: content.id), :class => 'btn btn-default' %>
+        </td>
+        <td><%= content.id %></td>
+        <td><%= content.name %></td>
+        <td><%= content.type %></td>
+        <td><%= content.content_tags.map{|ct| ct.tag.name}.join(',') %></td>
+        <td><%= content.playing_sec.nil? ? "" : Time.at(content.playing_sec).utc.strftime("%R") %></td>
+        <td><%= "#{content.validity_start_date} ～ #{content.validity_end_date}" %></td>
+        <td><%= content.enabled ? "有効" : "無効" %></td>
+        <td><%= content.created_at.strftime('%Y/%m/%d') %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

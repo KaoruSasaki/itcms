@@ -11,52 +11,54 @@
   <%= error_span(@playlist[:release_date]) %>
   
   <%= link_to "コンテンツ検索",
-    contents_path(playlist_id: 0), :class => 'btn btn-default btn-xs' %>
-  
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>コンテンツ名</th>
-        <th>種別</th>
-        <th>サムネイル</th>
-        <th>再生時間</th>
-        <th>有効期間</th>
-        <th>有効/無効</th>
-        <th>更新日</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      <% if @playlist.contents.size.zero? %>
-        <tr><td rowspan=9>コンテンツが未登録です。</td></tr>
-      <% else %>
-        <% @playlist.contents.each do |content| %>
+    search_contents_path(playlist_id: 0), :class => 'btn btn-default' %>
+
+  <% if @selected_contents.size.zero? %>
+     <div class="alert alert-warning" role="alert">コンテンツが未登録です</div>
+  <% else %>
+    <table class="table table-striped">
+      <thead>
         <tr>
-          <td><%= content.id %></td>
-          <td><%= content.name %></td>
-          <td><%= content.type %></td>
-          <td><%= content.thumbnail_url %></td>
-          <td><%= content.playing_sec.nil? ? "" : Time.at(content.playing_sec).utc.strftime("%R") %></td>
-          <td><%= "#{content.validity_start_date} ～ #{content.validity_end_date}" %></td>
-          <td><%= content.enabled ? "有効" : "無効" %></td>
-          <td><%= content.created_at.strftime('%Y/%m/%d') %></td>
-          <td>
-            <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                        edit_iticket_content_path(content), :class => 'btn btn-default btn-xs' %>
-            <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                        iticket_content_path(content),
-                        :method => :delete,
-                        :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-                        :class => 'btn btn-xs btn-danger' %>
-          </td>
+          <th>ID</th>
+          <th>コンテンツ名</th>
+          <th>種別</th>
+          <th>サムネイル</th>
+          <th>再生時間</th>
+          <th>有効期間</th>
+          <th>有効/無効</th>
+          <th>更新日</th>
+          <th></th>
         </tr>
-        <% end %>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+      <tbody id="content-tbody">
+          <% @selected_contents.each do |content| %>
+          <tr>
+            <td><%= content.id %></td>
+            <td><%= content.name %></td>
+            <td><%= content.type %></td>
+            <td><%= content.thumbnail_url %></td>
+            <td><%= content.playing_sec.nil? ? "" : Time.at(content.playing_sec).utc.strftime("%R") %></td>
+            <td><%= "#{content.validity_start_date} ～ #{content.validity_end_date}" %></td>
+            <td><%= content.enabled ? "有効" : "無効" %></td>
+            <td><%= content.created_at.strftime('%Y/%m/%d') %></td>
+            <td>
+              <input type="button" value="削除" onclick="removeList(this);" class="btn btn-xs" />
+            </td>
+          </tr>
+          <% end %>
+      </tbody>
+    </table>
+  <% end %>
   
   <%= f.button :submit, :class => 'btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 playlists_path, :class => 'btn btn-default' %>
 <% end %>
+
+<script>
+  function removeList(obj) {
+    var tbody = document.getElementById("content-tbody");
+    var tr = obj.parentNode.parentNode;
+    tbody.removeChild(tr);
+  }
+</script>

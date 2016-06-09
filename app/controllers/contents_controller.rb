@@ -19,7 +19,14 @@ class ContentsController < ApplicationController
   end
 
   def search
-    @q = Content.search(search_params)
+    if params.has_key?(:q)
+      conditions = search_params
+      @check_flag = (conditions[:enabled_eq]=="true") ? true : false
+    else
+      conditions = {}
+      @check_flag = true
+    end
+    @q = Content.search(conditions)
     @contents = @q
       .result
       .includes(:content_tags)
