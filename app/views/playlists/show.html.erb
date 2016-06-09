@@ -7,7 +7,7 @@
   <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
   <dd><%= @playlist.name %></dd>
   <dt><strong><%= model_class.human_attribute_name(:channel_id) %>:</strong></dt>
-  <dd><%= @playlist.channel_id %></dd>
+  <dd><%= channel_name(@playlist.channel_id) %></dd>
   <dt><strong><%= model_class.human_attribute_name(:play_start_date) %>:</strong></dt>
   <dd><%= @playlist.play_start_date %></dd>
   <dt><strong><%= model_class.human_attribute_name(:play_end_date) %>:</strong></dt>

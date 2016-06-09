@@ -24,9 +24,9 @@
       <tr>
         <td><%= playlist.name %></td>
         <td><%= @channels[playlist.channel_id] %></td>
-        <td><%= playlist.play_start_date %></td>
-        <td><%= playlist.play_end_date %></td>
-        <td><%= playlist.release_date %></td>
+        <td><%= display_date(playlist.play_start_date) %></td>
+        <td><%= display_date(playlist.play_end_date) %></td>
+        <td><%= display_date(playlist.release_date) %></td>
         <td></td>
         <td>
           <%= link_to t('.show', :default => t("helpers.links.show")),

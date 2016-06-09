@@ -33,10 +33,10 @@
           <% @selected_contents.each do |content| %>
           <tr>
             <td><%= content.name %></td>
-            <td><%= type_helper content.type %></td>
-            <td><%= "#{DateTime.parse(content.validity_start_date).strftime('%Y/%m/%d')} ～ #{DateTime.parse(content.validity_end_date).strftime('%Y/%m/%d')}" %></td>
-            <td><%= content.enabled ? "有効" : "無効" %></td>
-            <td><%= content.created_at.strftime('%Y/%m/%d') %></td>
+            <td><%= content_type_name(content.type) %></td>
+            <td><%= range_date(content.validity_start_date,content.validity_end_date) %></td>
+            <td><%= enabled_name(content.enabled)%></td>
+            <td><%= display_date(content.created_at) %></td>
             <td></td>
             <td></td>
             <td>
