@@ -7,4 +7,7 @@ module ApplicationHelper
       end
     end
   end
+  def type_helper(value)
+    value == "IticketContent" ? "アイチケット" : "医療機関"
+  end
 end

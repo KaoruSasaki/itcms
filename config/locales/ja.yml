@@ -201,6 +201,7 @@ ja:
       new: 新規登録
       cancel: 中止
       back: 戻る
+      show: 詳細
   number:
     currency:
       format:
