@@ -27,6 +27,8 @@ class PlaylistsController < ApplicationController
   # GET /playlists/new
   def new
     @playlist = Playlist.new
+    @selected_contents ||= []
+    @selected_contents.push(Content.find(params[:content_id].to_i)) unless params[:content_id].blank?
   end
 
   # GET /playlists/1/edit
