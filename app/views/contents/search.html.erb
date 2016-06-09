@@ -11,14 +11,13 @@
   <thead>
     <tr>
       <th></th>
-      <th>ID</th>
       <th>コンテンツ名</th>
       <th>種別</th>
       <th>タグ</th>
-      <th>再生時間</th>
       <th>有効期間</th>
       <th>有効/無効</th>
       <th>更新日</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -27,14 +26,13 @@
         <td>
           <%= link_to "選択", new_playlist_path(content_id: content.id), :class => 'btn btn-default' %>
         </td>
-        <td><%= content.id %></td>
         <td><%= content.name %></td>
         <td><%= content.type %></td>
         <td><%= content.content_tags.map{|ct| ct.tag.name}.join(',') %></td>
-        <td><%= content.playing_sec.nil? ? "" : Time.at(content.playing_sec).utc.strftime("%R") %></td>
-        <td><%= "#{content.validity_start_date} ～ #{content.validity_end_date}" %></td>
+        <td><%= "#{DateTime.parse(content.validity_start_date).strftime('%Y/%m/%d')} ～ #{DateTime.parse(content.validity_end_date).strftime('%Y/%m/%d')}" %></td>
         <td><%= content.enabled ? "有効" : "無効" %></td>
         <td><%= content.created_at.strftime('%Y/%m/%d') %></td>
+        <td></td>
       </tr>
     <% end %>
   </tbody>

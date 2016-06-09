@@ -10,30 +10,28 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:owner_id) %></th>
-      <th><%= model_class.human_attribute_name(:display_frame_id) %></th>
-      <th><%= model_class.human_attribute_name(:temporary_content_url) %></th>
-      <th><%= model_class.human_attribute_name(:emergency_message) %></th>
-      <th><%= model_class.human_attribute_name(:play_volume) %></th>
-      <th><%= model_class.human_attribute_name(:call_volume) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
       <th></th>
     </tr>
   </thead>
   <tbody>
     <% @devices.each do |device| %>
       <tr>
-        <td><%= link_to device.id, device_path(device) %></td>
         <td><%= device.name %></td>
         <td><%= device.owner_id %></td>
-        <td><%= @display_frames[device.display_frame_id] %></td>
-        <td><%= device.temporary_content_url %></td>
-        <td><%= device.emergency_message %></td>
-        <td><%= device.play_volume %></td>
-        <td><%= device.call_volume %></td>
         <td><%=l device.created_at %></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_device_path(device), :class => 'btn btn-default btn-xs' %>

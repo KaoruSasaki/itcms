@@ -19,28 +19,26 @@
     <table class="table table-striped">
       <thead>
         <tr>
-          <th>ID</th>
           <th>コンテンツ名</th>
           <th>種別</th>
-          <th>サムネイル</th>
-          <th>再生時間</th>
           <th>有効期間</th>
           <th>有効/無効</th>
           <th>更新日</th>
+          <th></th>
+          <th></th>
           <th></th>
         </tr>
       </thead>
       <tbody id="content-tbody">
           <% @selected_contents.each do |content| %>
           <tr>
-            <td><%= content.id %></td>
             <td><%= content.name %></td>
             <td><%= content.type %></td>
-            <td><%= content.thumbnail_url %></td>
-            <td><%= content.playing_sec.nil? ? "" : Time.at(content.playing_sec).utc.strftime("%R") %></td>
-            <td><%= "#{content.validity_start_date} ～ #{content.validity_end_date}" %></td>
+            <td><%= "#{DateTime.parse(content.validity_start_date).strftime('%Y/%m/%d')} ～ #{DateTime.parse(content.validity_end_date).strftime('%Y/%m/%d')}" %></td>
             <td><%= content.enabled ? "有効" : "無効" %></td>
             <td><%= content.created_at.strftime('%Y/%m/%d') %></td>
+            <td></td>
+            <td></td>
             <td>
               <input type="button" value="削除" onclick="removeList(this);" class="btn btn-xs" />
             </td>

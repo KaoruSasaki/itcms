@@ -10,26 +10,24 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:channel_id) %></th>
       <th><%= model_class.human_attribute_name(:play_start_date) %></th>
       <th><%= model_class.human_attribute_name(:play_end_date) %></th>
       <th><%= model_class.human_attribute_name(:release_date) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th></th>
       <th></th>
     </tr>
   </thead>
   <tbody>
     <% @playlists.each do |playlist| %>
       <tr>
-        <td><%= link_to playlist.id, playlist_path(playlist) %></td>
         <td><%= playlist.name %></td>
         <td><%= @channels[playlist.channel_id] %></td>
         <td><%= playlist.play_start_date %></td>
         <td><%= playlist.play_end_date %></td>
         <td><%= playlist.release_date %></td>
-        <td><%=l playlist.created_at %></td>
+        <td></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_playlist_path(playlist), :class => 'btn btn-default btn-xs' %>

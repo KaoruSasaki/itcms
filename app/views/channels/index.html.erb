@@ -10,18 +10,18 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th></th>
       <th></th>
     </tr>
   </thead>
   <tbody>
     <% @channels.each do |channel| %>
       <tr>
-        <td><%= link_to channel.id, channel_path(channel) %></td>
         <td><%= channel.name %></td>
         <td><%=l channel.created_at %></td>
+        <td></td>
         <td>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
                       edit_channel_path(channel), :class => 'btn btn-default btn-xs' %>
