@@ -34,7 +34,7 @@ ja:
         channel_id: 'チャネル名'
         play_start_date: '放映開始日'
         play_end_date: '放映終了日'
-        release_date: '公開開始日'
+        release_date: '公開日'
         created_at: '登録日'
       tag:
         id: 'タグID'

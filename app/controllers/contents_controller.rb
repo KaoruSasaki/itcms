@@ -8,7 +8,7 @@ class ContentsController < ApplicationController
       conditions = search_params
       @check_flag = (conditions[:enabled_eq]=="true") ? true : false
     else
-      conditions = {}
+      conditions = {enabled_eq: true}
       @check_flag = true
     end
     @q = Content.search(conditions)
@@ -100,7 +100,7 @@ class ContentsController < ApplicationController
   end
 
   def update_params
-    params.require(@content.type.underscore).permit(:type, :name, :url, :validity_start_date, :validity_end_date)
+    params.require(@content.type.underscore).permit(:type, :name, :url, :validity_start_date, :validity_end_date, :enabled)
   end
 
   # 検索フォームから受け取ったパラメータ

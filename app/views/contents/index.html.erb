@@ -30,7 +30,7 @@
         <td><%= content.type %></td>
         <td><%= content.content_tags.map{|ct| ct.tag.name}.join(',') %></td>
         <td><%= content.playing_sec.nil? ? "" : Time.at(content.playing_sec).utc.strftime("%R") %></td>
-        <td><%= "#{content.validity_start_date} ～ #{content.validity_end_date}" %></td>
+        <td><%= "#{DateTime.parse(content.validity_start_date).strftime('%Y/%m/%d')} ～ #{DateTime.parse(content.validity_end_date).strftime('%Y/%m/%d')}" %></td>
         <td><%= content.enabled ? "有効" : "無効" %></td>
         <td><%= content.created_at.strftime('%Y/%m/%d') %></td>
         <td>
