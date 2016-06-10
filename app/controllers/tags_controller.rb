@@ -12,7 +12,8 @@ class TagsController < ApplicationController
   end
   
   def search
-    @q = Tag.search(search_params)
+    conditions = params.has_key?(:q) ? search_params : {}
+    @q = Tag.search(conditions)
     @tags = @q
       .result
       .order(updated_at: :desc)

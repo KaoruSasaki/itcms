@@ -1,0 +1,39 @@
+<%- model_class = Tag -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => "タグ検索" %></h1>
+</div>
+<%= link_to "戻る", :back, :class => 'btn btn-default' %>
+<div>
+  <%= render :partial => 'search_form', locals: {action_path: search_tags_path} %>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>タグ名</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @tags.each do |tag| %>
+      <tr>
+        <td>
+          <%= link_to "選択", new_content_path(tag_id: tag.id),:class => 'btn btn-default' %>
+        </td>
+        <td><%= tag.name %></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

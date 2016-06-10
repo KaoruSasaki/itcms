@@ -9,6 +9,44 @@
   <%= error_span(@content[:validity_start_date]) %>
   <%= f.input :validity_end_date, as: :date_picker %>
   <%= error_span(@content[:validity_end_date]) %>
+
+  <%= link_to t('.tag', :default => t("helpers.links.tag")),
+                search_tags_path, :class => 'btn btn-default' %>
+
+  <% if @selected_tags.size.zero? %>
+     <div class="alert alert-warning" role="alert">タグが未登録です</div>
+  <% else %>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>タグ名</th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="content-tbody">
+          <% @selected_tags.each do |tag| %>
+          <tr>
+            <td><%= tag.name %></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+              <input type="button" value="削除" onclick="removeList(this);" class="btn btn-xs" />
+            </td>
+          </tr>
+          <% end %>
+      </tbody>
+    </table>
+  <% end %>            
   <%= f.button :submit, :class => 'btn-primary' %>
   <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
                 contents_path, :class => 'btn btn-default' %>

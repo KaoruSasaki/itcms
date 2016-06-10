@@ -14,7 +14,11 @@ Rails.application.routes.draw do
   resources :channels
   resources :playlists
   resources :devices
-  resources :tags
+  resources :tags do
+    collection do
+      match 'search' => 'tags#search', via: [:get, :post], as: :search
+    end
+  end
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'

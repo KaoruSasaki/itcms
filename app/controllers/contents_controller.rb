@@ -41,6 +41,8 @@ class ContentsController < ApplicationController
   # GET /contents/new
   def new
     @content = Content.new
+    @selected_tags ||= []
+    @selected_tags.push(Tag.find(params[:tag_id].to_i)) unless params[:tag_id].blank?
   end
 
   # GET /contents/1/edit
