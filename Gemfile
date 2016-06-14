@@ -41,7 +41,6 @@ gem 'execjs'
 gem 'twitter-bootstrap-rails', '3.2.0'
 
 gem 'simple_form'
-gem 'bootstrap-wysihtml5-rails'
 
 gem 'momentjs-rails'
 # DateTimePicker
