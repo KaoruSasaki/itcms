@@ -11,7 +11,7 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:name) %></th>
-      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%= model_class.human_attribute_name(:updated_at) %></th>
       <th></th>
       <th></th>
     </tr>
@@ -20,7 +20,7 @@
     <% @channels.each do |channel| %>
       <tr>
         <td><%= channel.name %></td>
-        <td><%=l channel.created_at %></td>
+        <td><%=l channel.updated_at %></td>
         <td></td>
         <td>
           <%= link_to t('.show', :default => t("helpers.links.show")),

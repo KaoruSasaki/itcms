@@ -28,6 +28,7 @@ ja:
         validity_end_date: '有効期間終了日'
         enabled: '有効/無効'
         created_at: '登録日'
+        updated_at: '更新日'
       playlist:
         id: 'プレイリストID'
         name: 'プレイリスト名'
@@ -36,20 +37,24 @@ ja:
         play_end_date: '放映終了日'
         release_date: '公開日'
         created_at: '登録日'
+        updated_at: '更新日'
       tag:
         id: 'タグID'
         name: 'タグ名'
         created_at: '登録日'
         actions: '編集/削除'
+        updated_at: '更新日'
       sub_content:
         id: 'サブコンテンツID'
         name: 'サブコンテンツ名'
         url: '取得元URL'
         created_at: '登録日'
+        updated_at: '更新日'
       channel:
         id: 'チャネルID'
         name: 'チャネル名'
         created_at: '登録日'
+        updated_at: '更新日'
       device:
         id: '端末ID'
         name: '端末名'
@@ -60,6 +65,7 @@ ja:
         play_volume: '放映音量'
         call_volume: '呼出音量'
         created_at: '登録日'
+        updated_at: '更新日'
   date:
     abbr_day_names:
     - 日
