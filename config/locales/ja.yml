@@ -16,7 +16,7 @@ ja:
       sub_content: 'サブコンテンツ'
       channel: 'チャネル'
       device: '端末'
-      notification: 'お知らせ'
+      notification: 'お知らせメッセージ'
     attributes:
       content:
         id: 'コンテンツID'
