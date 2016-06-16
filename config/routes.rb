@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :notifications
   resources :menus
   resources :users
   resources :display_frames
