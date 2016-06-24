@@ -7,13 +7,14 @@ class BlockContentsController < ApplicationController
   # POST /contents
   # POST /contents.json
   def import
-    ret = Content.create_block(params[:file_url])
-    
-    respond_to do |format|
-      if ret
-        format.html { redirect_to :back, notice: 'Succeeded in shelf registration of content.' }
+    if params[:file_url].blank?
+      redirect_to(:back, alert: 'インポートするCSVファイルを選択してください')
+    else
+      num,messages = Content.import(params[:file_url])
+      if messages.blank?
+        redirect_to(:back, notice: "#{num.to_s}件のユーザー情報を追加 / 更新しました")
       else
-        format.html { redirect_to :back, notice: 'Failed to shelf registration of content.' }
+        redirect_to(:back, alert: "#{(num-messages.size).to_s}件のユーザー情報を追加 / 更新しました(エラー:#{messages.size.to_s}件)")
       end
     end
   end
