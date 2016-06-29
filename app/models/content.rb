@@ -18,15 +18,6 @@ class Content < ActiveRecord::Base
     self.validity_end_date = self.validity_end_date.gsub('/','')
   end
 
-  class << self
-    def create_block(file)
-      if file.blank?
-        false
-      else
-        true
-      end
-    end
-  end
 # CSVファイルの内容をDBに登録する
   def self.import(file_url)
 
@@ -38,22 +29,31 @@ class Content < ActiveRecord::Base
       csv = CSV.new(f, :headers => :first_row)
       csv.each do |row|
         next if row.header_row?
-
+        
+        tag_table = []
         # CSVの行情報をHASHに変換、不要Key項目の除外
         table = Hash[[row.headers, row.fields].transpose]
-        update_hash = table.to_hash.slice(*table.to_hash.except("id", "lock_version", "created_at", "updated_at").keys)
+        update_hash = table.to_hash.slice(*table.to_hash.except("id", "tag1", "tag2", "tag3", "tag4", "tag5", "lock_version", "created_at", "updated_at").keys)
+        update_hash = update_hash.merge({"type" => (update_hash["type"] == "1")? "IticketContent" : "MedicalContent"})
+        # 1レコード内のtagをtableに整形
+        for i in 1..5 do
+          tag_table << table["tag#{i}"] unless table["tag#{i}"].nil?
+        end
+        tags = Tag.where(code: tag_table)
+        sorted_tags = tag_table.collect {|code| tags.detect {|t| t.code == code}}
 
         # 登録済みコンテンツ情報取得。
         # 登録されてなければ作成
         content = Content.find_or_create_by(code: table["code"])
-        binding.pry
         # コンテンツ情報更新
         begin
           content.update_attributes!(update_hash)
+          content.content_tags.delete_all
+          sorted_tags.each_with_index{|t,idx| ContentTag.create({content_id: content.id, tag_id: t.id, display_order: idx+1})}
         rescue => e
           messages << e.message
         end
-        
+
         imported_num += 1
       end
     end

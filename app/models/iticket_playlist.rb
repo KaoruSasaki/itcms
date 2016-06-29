@@ -1,0 +1,2 @@
+class IticketPlaylist < Playlist
+end

@@ -26,8 +26,8 @@ ActiveRecord::Schema.define(version: 20160616004858) do
   end
 
   create_table "channels", force: :cascade do |t|
-    t.string   "name",         limit: 255
     t.string   "code",         limit: 255
+    t.string   "name",         limit: 255
     t.integer  "lock_version", limit: 4,   default: 0
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
@@ -57,9 +57,9 @@ ActiveRecord::Schema.define(version: 20160616004858) do
   end
 
   create_table "contents", force: :cascade do |t|
+    t.string   "code",                limit: 255
     t.string   "type",                limit: 255
     t.string   "name",                limit: 255
-    t.string   "code",                limit: 255
     t.string   "url",                 limit: 255
     t.string   "thumbnail_url",       limit: 255
     t.integer  "playing_sec",         limit: 4
@@ -105,9 +105,10 @@ ActiveRecord::Schema.define(version: 20160616004858) do
   end
 
   create_table "notifications", force: :cascade do |t|
-    t.string   "text",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "text",         limit: 255
+    t.integer  "lock_version", limit: 4,   default: 0
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
   end
 
   create_table "playlist_contents", force: :cascade do |t|
@@ -120,8 +121,9 @@ ActiveRecord::Schema.define(version: 20160616004858) do
   end
 
   create_table "playlists", force: :cascade do |t|
-    t.string   "name",            limit: 255
     t.string   "code",            limit: 255
+    t.string   "type",            limit: 255
+    t.string   "name",            limit: 255
     t.integer  "channel_id",      limit: 4
     t.string   "play_start_date", limit: 255
     t.string   "play_end_date",   limit: 255
@@ -140,8 +142,8 @@ ActiveRecord::Schema.define(version: 20160616004858) do
   end
 
   create_table "tags", force: :cascade do |t|
-    t.string   "name",          limit: 255
     t.string   "code",          limit: 255
+    t.string   "name",          limit: 255
     t.integer  "display_order", limit: 4
     t.integer  "lock_version",  limit: 4,   default: 0
     t.datetime "created_at",                            null: false

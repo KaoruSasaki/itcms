@@ -1,0 +1,2 @@
+class CustomPlaylist < Playlist
+end

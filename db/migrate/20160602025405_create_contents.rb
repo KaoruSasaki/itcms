@@ -1,9 +1,9 @@
 class CreateContents < ActiveRecord::Migration
   def change
     create_table :contents do |t|
+      t.string :code
       t.string :type
       t.string :name
-      t.string :code
       t.string :url
       t.string :thumbnail_url
       t.integer :playing_sec
