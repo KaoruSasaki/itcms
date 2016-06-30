@@ -79,6 +79,8 @@ class PlaylistsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_playlist
       @playlist = Playlist.find(params[:id])
+      @selected_contents ||= []
+      @selected_contents.push(Content.find(params[:content_id].to_i)) unless params[:content_id].blank?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -22,6 +22,7 @@ ja:
         id: 'コンテンツID'
         type: 'コンテンツ種別'
         name: 'コンテンツ名'
+        tag: 'タグ'
         url: 'コンテンツURL'
         thumbnail_url: 'サムネイル画像URL'
         playing_sec: '動画の長さ'

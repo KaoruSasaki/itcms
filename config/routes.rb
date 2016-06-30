@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   resources :iticket_contents, controller: :contents, type: 'IticketContent'
   resources :medical_contents, controller: :contents, type: 'MedicalContent'
   resources :template_contents, controller: :contents, type: 'TemplateContent'
+  resources :iticket_playlists, controller: :plyalists, type: 'IticketPlaylist'
+  resources :custom_playlists, controller: :playlists, type: 'CustomPlaylist'
   resources :sub_contents
   resources :channels
   resources :playlists

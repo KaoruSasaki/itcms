@@ -8,6 +8,8 @@
   <dd><%= content_type_name(@content.type) %></dd>
   <dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
   <dd><%= @content.name %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:tag) %>:</strong></dt>
+  <dd><%= @content.content_tags.map{|ct| ct.tag.name}.join(',') %></dd>  
   <dt><strong><%= model_class.human_attribute_name(:url) %>:</strong></dt>
   <dd><%= @content.url %></dd>
   <dt><strong><%= model_class.human_attribute_name(:validity_start_date) %>:</strong></dt>
