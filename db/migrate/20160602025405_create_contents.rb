@@ -3,6 +3,7 @@ class CreateContents < ActiveRecord::Migration
     create_table :contents do |t|
       t.string :code
       t.string :type
+      t.string :owner_id
       t.string :name
       t.string :url
       t.string :thumbnail_url

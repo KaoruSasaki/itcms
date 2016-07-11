@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160616004858) do
+ActiveRecord::Schema.define(version: 20160707084004) do
+
+  create_table "addresses", primary_key: "address_id", force: :cascade do |t|
+    t.integer  "member_id",  limit: 4
+    t.string   "zipcode",    limit: 255
+    t.string   "address",    limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "businesses", force: :cascade do |t|
     t.integer  "device_id",        limit: 4
@@ -59,6 +67,7 @@ ActiveRecord::Schema.define(version: 20160616004858) do
   create_table "contents", force: :cascade do |t|
     t.string   "code",                limit: 255
     t.string   "type",                limit: 255
+    t.string   "owner_id",            limit: 255
     t.string   "name",                limit: 255
     t.string   "url",                 limit: 255
     t.string   "thumbnail_url",       limit: 255
@@ -104,6 +113,11 @@ ActiveRecord::Schema.define(version: 20160616004858) do
     t.datetime "updated_at",                            null: false
   end
 
+  create_table "members", primary_key: "member_id", force: :cascade do |t|
+    t.string "name", limit: 255
+    t.string "mail", limit: 255
+  end
+
   create_table "notifications", force: :cascade do |t|
     t.string   "text",         limit: 255
     t.integer  "lock_version", limit: 4,   default: 0
@@ -123,6 +137,7 @@ ActiveRecord::Schema.define(version: 20160616004858) do
   create_table "playlists", force: :cascade do |t|
     t.string   "code",            limit: 255
     t.string   "type",            limit: 255
+    t.integer  "device_id",       limit: 4
     t.string   "name",            limit: 255
     t.integer  "channel_id",      limit: 4
     t.string   "play_start_date", limit: 255

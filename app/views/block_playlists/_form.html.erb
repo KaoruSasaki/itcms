@@ -2,9 +2,11 @@
   <div class="panel-body">
     <%= form_tag(import_block_playlists_path, :method => :post, multipart: true) do %>
       <div class="form-group">
+        提供プレイリスト
         <%= file_field_tag :playlist_headers_file_url %>
       </div>
       <div class="form-group">
+        提供プレイリスト明細
         <%= file_field_tag :playlist_details_file_url %>
       </div>
       <%= submit_tag "CSVインポート", :class => "btn btn-primary" %>
